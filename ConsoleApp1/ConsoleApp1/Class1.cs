@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    
+
     internal class Stack
     {
         public class Node
@@ -30,7 +30,7 @@ namespace ConsoleApp1
         {
             Node node = new Node(data);
 
-            if(node==null)
+            if (node == null)
             {
                 head = node;
                 return true;
@@ -42,10 +42,10 @@ namespace ConsoleApp1
         }
 
         public void Display()
-        { 
+        {
             Node t = head;
 
-            if(t==null)
+            if (t == null)
             {
                 Console.WriteLine("Node is empty");
             }
@@ -54,6 +54,37 @@ namespace ConsoleApp1
                 Console.WriteLine(t.data);
                 t = t.next;
             }
+        }
+
+        public int peek()
+        {
+            if (head == null)
+                throw new NullReferenceException("empty List");
+            Node t = head, p = head;
+            while (t.next != null)
+            {
+                p = t;
+                t = t.next;
+            }
+            int obj = t.data;
+            return obj;
+        }
+
+        public int Pop()
+        {
+            if (head == null)
+            {
+                throw new NullReferenceException("List is Empty");
+            }
+            Node t = head, p = head;
+            while (t.next != null)
+            {
+                p = t;
+                t = t.next;
+            }
+           int obj = t.data;
+            p.next = null;
+            return obj;
         }
     }
 }
